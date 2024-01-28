@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 export const useCreateSecret = (trackingCode?: string): Address => {
   const [secret, setSecret] = useState<string | null>('0x')
 
-  const baseHashFull = namehash('enswidgets.eth')
+  const baseHashFull = namehash('pnswidgets.pls')
   const baseHash = baseHashFull.slice(2, 10)
 
   const randomFallback = Math.random().toString(16)

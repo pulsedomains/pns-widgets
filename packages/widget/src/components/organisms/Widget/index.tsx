@@ -19,7 +19,7 @@ interface WidgetProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Widget that allows users to register ENS names inline.
+ * Widget that allows users to register PNS names inline.
  * @param connectAction Function that gets called when the user clicks the connect button.
  * @param hasContainer Whether or not to render the widget in a container. Defaults to true.
  * @param hasHeader Whether or not to show the widget header. Defaults to true.

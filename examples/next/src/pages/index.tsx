@@ -1,5 +1,5 @@
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit'
-import { RegistrationWidget } from 'ens-widgets'
+import { RegistrationWidget } from '@pnsdomains/widgets'
 import Head from 'next/head'
 
 export default function Home() {

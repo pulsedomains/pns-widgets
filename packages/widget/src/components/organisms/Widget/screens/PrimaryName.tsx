@@ -1,4 +1,4 @@
-import { Helper, mq, Typography } from '@ensdomains/thorin'
+import { Helper, mq, Typography } from '@pnsdomains/thorin'
 import {
   useContractWrite,
   useNetwork,
@@ -58,7 +58,7 @@ export const PrimaryName = ({
     address: getReverseRegistrarAddress(chain?.id),
     abi: REVERSE_REGISTRAR_ABI,
     functionName: 'setName',
-    args: [`${name}.eth`],
+    args: [`${name}.pls`],
   })
 
   const transaction = useContractWrite(prepare.config)
@@ -75,15 +75,15 @@ export const PrimaryName = ({
       {hasHeader && <Header />}
 
       <Typography asProp="p">
-        To improve your web3 experience, set your Primary ENS Name.
+        To improve your web3 experience, set your Primary PNS Name.
       </Typography>
       <Typography asProp="p">
-        This will allow dapps to identify you as {name}.eth
+        This will allow dapps to identify you as {name}.pls
       </Typography>
 
       {prepare.isError ? (
         <Helper type="error">
-          <div>Unable to read from ENS Registrar</div>
+          <div>Unable to read from PNS Registrar</div>
         </Helper>
       ) : receipt.isLoading ? (
         <Button

@@ -16,12 +16,12 @@ export const parseDuration = (duration: string): string => {
 }
 
 /**
- * Parses a name and returns a string of the name without the .eth suffix
- * @param name ENS name with or without .eth suffix e.g. 'wagmi.eth' or 'wagmi'
- * @returns string of name without .eth suffix e.g. 'wagmi'
+ * Parses a name and returns a string of the name without the .pls suffix
+ * @param name PNS name with or without .pls suffix e.g. 'wagmi.pls' or 'wagmi'
+ * @returns string of name without .pls suffix e.g. 'wagmi'
  */
 export const parseName = (name: string): string => {
-  return name.endsWith('.eth') ? name.split('.eth')[0] : name
+  return name.endsWith('.pls') ? name.split('.pls')[0] : name
 }
 
 export const getEtherscanLink = (
@@ -30,7 +30,11 @@ export const getEtherscanLink = (
 ) => {
   const hash = typeof tx === 'string' ? tx : tx?.hash
 
-  return `https://${chain?.id === 5 ? 'goerli.' : ''}etherscan.io/tx/${hash}`
+  if (chain?.id === 943) {
+    return `https://scan.v4.testnet.pulsechain.com/tx/${hash}`
+  }
+
+  return `https://otter.pulsechain.com/tx/${hash}`
 }
 
 export const truncateAddress = (address: string) => {
@@ -46,9 +50,9 @@ export const getSetAddrData = (address?: string, name?: string) => {
 
   const encodedData = abiCoder.encode(
     ['bytes32', 'uint256', 'bytes'],
-    [namehash(name + '.eth'), 60, address]
+    [namehash(name + '.pls'), 1028, address]
   ) as `0x${string}`
 
-  const formattedData = '0x8b95dd71' + encodedData.slice(2)
+  const formattedData = '0x8b95dd71' + encodedData.slice(2) // TODO: check me
   return formattedData as `0x${string}`
 }

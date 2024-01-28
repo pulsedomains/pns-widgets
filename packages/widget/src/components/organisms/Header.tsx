@@ -1,7 +1,7 @@
-import { mq, Typography } from '@ensdomains/thorin'
+import { mq, Typography } from '@pnsdomains/thorin'
 import styled, { css } from 'styled-components'
 
-import { Logo } from '../atoms/Icons'
+import logo from '../../assets/images/pns-logo.png'
 
 const Container = styled.div(
   ({ theme }) => css`
@@ -39,10 +39,10 @@ export const Header = () => {
   return (
     <Container>
       <Title asProp="label" weight="bold" style={{ lineHeight: 1 }}>
-        Register an .eth name
+        Register an .pls name
       </Title>
-      <LogoWrapper as="a" href="http://ens.domains/" target="_blank">
-        <Logo />
+      <LogoWrapper as="a" href="https://pulse.domains" target="_blank">
+        <img src={logo} width={24} height={24} />
       </LogoWrapper>
     </Container>
   )

@@ -1,7 +1,7 @@
 import {
   darkTheme as thorinDarkTheme,
   lightTheme as thorinLightTheme,
-} from '@ensdomains/thorin'
+} from '@pnsdomains/thorin'
 
 export const lightTheme = {
   ...thorinLightTheme,

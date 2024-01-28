@@ -6,7 +6,7 @@ import {
   useNetwork,
   usePrepareContractWrite,
 } from 'wagmi'
-import { Helper } from '@ensdomains/thorin'
+import { Helper } from '@pnsdomains/thorin'
 import { useEffect, useState } from 'react'
 import { BigNumber } from 'ethers'
 
@@ -104,14 +104,17 @@ export const Start = ({
     abi: REGISTRAR_ABI,
     functionName: 'makeCommitment',
     args: [
-      parseName(debouncedName),
-      address || '0x',
-      parseDuration(duration) as unknown as BigNumber,
-      secret,
-      resolver,
-      [getSetAddrData(address, parseName(debouncedName))],
-      isPrimaryNameChecked,
-      0,
+      {
+        name: parseName(debouncedName),
+        owner: address || '0x0000000000000000000000000000000000000000',
+        duration: parseDuration(duration) as unknown as BigNumber,
+        secret,
+        resolver,
+        data: [getSetAddrData(address, parseName(debouncedName))],
+        reverseRecord: isPrimaryNameChecked,
+        ownerControlledFuses: 0,
+        referrer: '0x0000000000000000000000000000000000000000'
+      }
     ],
     enabled: !!debouncedName && !!address && !!available.data,
   })
@@ -152,7 +155,7 @@ export const Start = ({
         <Input
           type="text"
           label="Name"
-          placeholder="nick.eth"
+          placeholder="richard.pls"
           value={name}
           setValue={setName}
           isValid={isValid}
@@ -176,7 +179,7 @@ export const Start = ({
 
       {available.isError || makeCommitment.isError || prepareCommit.isError ? (
         <Helper type="error">
-          <div>Unable to read from ENS Registrar</div>
+          <div>Unable to read from PNS Registrar</div>
         </Helper>
       ) : !isConnected || !isMounted ? (
         <Button shadow={false} colorStyle="accentSecondary" type="submit">

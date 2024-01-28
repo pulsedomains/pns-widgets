@@ -1,4 +1,4 @@
-import { Button as ThorinButton, mq } from '@ensdomains/thorin'
+import { Button as ThorinButton, mq } from '@pnsdomains/thorin'
 import styled, { css } from 'styled-components'
 
 export const Button = styled(ThorinButton)(
@@ -16,7 +16,7 @@ export const Button = styled(ThorinButton)(
 
     &:disabled {
       color: #fff;
-      background-color: ${theme.colors.accent};
+      background-color: ${theme.colors.grey};
     }
 
     ${colorStyle === 'accentSecondary' &&

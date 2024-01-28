@@ -2,6 +2,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import resolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
+import image from 'rollup-plugin-img';
 import typescript from 'rollup-plugin-typescript2'
 
 import packageJson from './package.json' assert { type: 'json' }
@@ -27,6 +28,9 @@ export default [
         exclude: 'node_modules/**',
       }),
       terser(),
+      image({
+        output: `dist/images`,
+      }),
     ],
   },
 ]

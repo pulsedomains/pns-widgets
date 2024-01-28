@@ -1,7 +1,7 @@
 {
-  "name": "ens-widgets",
-  "version": "0.0.11",
-  "description": "React components for interacting with the Ethereum Name Service",
+  "name": "@pnsdomains/widgets",
+  "version": "1.0.0",
+  "description": "React components for interacting with the PulseChain Name Service",
   "author": "Greg Skriloff",
   "scripts": {
     "dev": "rollup -w -c",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gskril/ens-widget.git",
+    "url": "git+https://github.com/pnsdomains/widgets.git",
     "directory": "packages/widget"
   },
   "module": "dist/index.js",
@@ -31,11 +31,12 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "^0.10.10"
+    "wagmi": "0.12.13"
   },
   "dependencies": {
     "@adraffy/ens-normalize": "^1.8.6",
-    "@ensdomains/thorin": "^0.6.39",
+    "@pnsdomains/thorin": "1.0.17",
+    "bignumber.js": "^9.1.2",
     "react-transition-state": "^2.0.2",
     "react-use-measure": "^2.1.1",
     "styled-components": "^5.3.6"

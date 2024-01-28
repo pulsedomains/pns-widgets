@@ -1,5 +1,5 @@
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit'
-import { RegistrationWidget } from 'ens-widgets'
+import { RegistrationWidget } from '@pnsdomains/widgets'
 import { useState } from 'react'
 
 import './App.css'
@@ -26,11 +26,11 @@ export default function Home() {
         <RegistrationWidget
           connectAction={openConnectModal}
           onStatusUpdate={handleStatusUpdate}
-          trackingCode="demo.eth"
+          trackingCode="demo.pls"
         />
       </div>
 
-      <a href="https://github.com/gskril/ens-widgets">GitHub Repo</a>
+      <a href="https://github.com/pnsdomains/pns-widgets">GitHub Repo</a>
     </main>
   )
 }

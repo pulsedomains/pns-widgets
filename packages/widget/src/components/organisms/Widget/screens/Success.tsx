@@ -1,10 +1,11 @@
-import { Typography } from '@ensdomains/thorin'
+import { Typography } from '@pnsdomains/thorin'
 import { useAccount } from 'wagmi'
 import styled, { css } from 'styled-components'
 
 import { Link } from '../../../atoms/Link'
-import { Logo } from '../../../atoms/Icons'
 import { truncateAddress } from '../../../../utils'
+
+import logo from '../../../../assets/images/pns-logo.png'
 
 const Container = styled.div(
   ({ theme }) => css`
@@ -57,7 +58,7 @@ export const Success = ({ name }: RegistrationSuccessProps) => {
     <Container>
       <div className="head">
         <LogoWrapper>
-          <Logo />
+          <img src={logo} width={24} height={24} />
         </LogoWrapper>
 
         <Heading>Registration Complete!</Heading>
@@ -66,15 +67,15 @@ export const Success = ({ name }: RegistrationSuccessProps) => {
       <div>
         {address && (
           <Typography asProp="p">
-            {name}.eth will now point to{' '}
+            {name}.pls will now point to{' '}
             <span title={address}>{truncateAddress(address)}</span> across web3.
           </Typography>
         )}
 
         <Typography asProp="p">
           Configure your name further at{' '}
-          <Link to={`https://app.ens.domains/name/${name}.eth`}>
-            app.ens.domains
+          <Link to={`https://app.pulse.domains/${name}.pls`}>
+            app.pulse.domains
           </Link>
           .
         </Typography>

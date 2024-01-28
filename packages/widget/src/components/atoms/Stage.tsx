@@ -1,4 +1,4 @@
-import { Spinner, Typography } from '@ensdomains/thorin'
+import { Spinner, Typography } from '@pnsdomains/thorin'
 import styled, { css } from 'styled-components'
 
 import { CheckIcon, CrossIcon } from './Icons'

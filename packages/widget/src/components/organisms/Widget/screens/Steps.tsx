@@ -82,14 +82,17 @@ export const Steps = ({
     abi: REGISTRAR_ABI,
     functionName: 'register',
     args: [
-      parseName(name),
-      address || '0x',
-      parseDuration(duration) as unknown as BigNumber,
-      secret,
-      resolver,
-      [getSetAddrData(address, parseName(name))],
-      isPrimaryNameChecked,
-      0,
+      {
+        name: parseName(name),
+        owner: address || '0x0000000000000000000000000000000000000000',
+        duration: parseDuration(duration) as unknown as BigNumber,
+        secret,
+        resolver,
+        data: [getSetAddrData(address, parseName(name))],
+        reverseRecord: isPrimaryNameChecked,
+        ownerControlledFuses: 0,
+        referrer: '0x0000000000000000000000000000000000000000'
+      }
     ],
     overrides: {
       value: parseEther((Number(rentEth)! * 1.05).toFixed(12).toString()),
@@ -111,7 +114,7 @@ export const Steps = ({
   }, [registerTx.isSuccess])
 
   const rowData = [
-    { name: 'Name', value: parseName(name) + '.eth' },
+    { name: 'Name', value: parseName(name) + '.pls' },
     { name: 'Duration', value: duration },
     { name: 'Estimated Cost', value: cost || '' },
   ]

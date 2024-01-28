@@ -1,4 +1,4 @@
-import { Typography } from '@ensdomains/thorin'
+import { Typography } from '@pnsdomains/thorin'
 import styled, { css } from 'styled-components'
 
 const StyledCard = styled.div(
