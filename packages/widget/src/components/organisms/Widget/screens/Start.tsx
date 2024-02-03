@@ -8,7 +8,7 @@ import {
 } from 'wagmi'
 import { Helper } from '@pnsdomains/thorin'
 import { useEffect, useState } from 'react'
-import { BigNumber } from 'ethers'
+import { BigNumber, utils } from 'ethers'
 
 import {
   REGISTRAR_ABI,
@@ -31,6 +31,7 @@ interface StartProps {
   name: string
   presetName: string | undefined
   secret: `0x${string}`
+  referrer?: string
   setCommitHash: React.Dispatch<React.SetStateAction<Address | null>>
   setDuration: React.Dispatch<React.SetStateAction<string>>
   setIsPrimaryNameChecked: React.Dispatch<React.SetStateAction<boolean>>
@@ -45,6 +46,7 @@ export const Start = ({
   name,
   presetName,
   secret,
+  referrer,
   setCommitHash,
   setDuration,
   setIsPrimaryNameChecked,
@@ -99,6 +101,8 @@ export const Start = ({
 
   const isValid = checkIsValid()
 
+  const isValidReferrer = referrer ? utils.isAddress(referrer) : false
+
   const makeCommitment = useContractRead({
     address: registrar,
     abi: REGISTRAR_ABI,
@@ -113,7 +117,9 @@ export const Start = ({
         data: [getSetAddrData(address, parseName(debouncedName))],
         reverseRecord: isPrimaryNameChecked,
         ownerControlledFuses: 0,
-        referrer: '0x0000000000000000000000000000000000000000'
+        referrer: isValidReferrer
+          ? referrer as `0x${string}`
+          : '0x0000000000000000000000000000000000000000'
       }
     ],
     enabled: !!debouncedName && !!address && !!available.data,

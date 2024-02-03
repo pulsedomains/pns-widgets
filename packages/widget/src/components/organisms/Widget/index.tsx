@@ -16,6 +16,7 @@ interface WidgetProps extends React.HTMLAttributes<HTMLDivElement> {
   shadowless?: boolean
   theme?: Theme
   trackingCode?: string
+  referrer?: string
 }
 
 /**
@@ -37,6 +38,7 @@ export const RegistrationWidget = ({
   shadowless = false,
   theme: widgetTheme,
   trackingCode,
+  referrer,
   ...props
 }: WidgetProps) => {
   const [sizeRef, { height }] = useMeasure()

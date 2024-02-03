@@ -14,6 +14,7 @@ interface WidgetProps {
   presetName?: string
   setStatus: (newStatus: WidgetStatus) => void
   trackingCode?: string
+  referrer?: string
 }
 
 const Widget = ({
@@ -23,6 +24,7 @@ const Widget = ({
   hasHeader,
   presetName,
   trackingCode,
+  referrer,
   setStatus,
   ...props
 }: WidgetProps) => {
@@ -69,6 +71,7 @@ const Widget = ({
           isPrimaryNameChecked={isPrimaryNameChecked}
           name={name}
           secret={secret}
+          referrer={referrer}
           setIsRegistrationSuccess={setIsRegistrationSuccess}
         />
       ) : (
@@ -81,6 +84,7 @@ const Widget = ({
           name={name}
           presetName={presetName}
           secret={secret}
+          referrer={referrer}
           setCommitHash={setCommitHash}
           setDuration={setDuration}
           setIsPrimaryNameChecked={setIsPrimaryNameChecked}

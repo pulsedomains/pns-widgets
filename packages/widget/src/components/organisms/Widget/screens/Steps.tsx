@@ -6,7 +6,7 @@ import {
   usePrepareContractWrite,
   useWaitForTransaction,
 } from 'wagmi'
-import { BigNumber } from 'ethers'
+import { BigNumber, utils } from 'ethers'
 import { parseEther } from 'ethers/lib/utils.js'
 import { useState, useEffect } from 'react'
 
@@ -36,6 +36,7 @@ interface StepsProps {
   isPrimaryNameChecked: boolean
   name: string
   secret: Address
+  referrer?: string
   setIsRegistrationSuccess: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -46,6 +47,7 @@ export const Steps = ({
   isPrimaryNameChecked,
   name,
   secret,
+  referrer,
   setIsRegistrationSuccess,
 }: StepsProps) => {
   const { chain } = useNetwork()
@@ -74,6 +76,8 @@ export const Steps = ({
     }
   }, [commitTx.isSuccess])
 
+  const isValidReferrer = referrer ? utils.isAddress(referrer) : false
+
   const resolver = getResolverAddress(chain?.id)
   const registrar = getRegistrarAddress(chain?.id)
 
@@ -91,7 +95,9 @@ export const Steps = ({
         data: [getSetAddrData(address, parseName(name))],
         reverseRecord: isPrimaryNameChecked,
         ownerControlledFuses: 0,
-        referrer: '0x0000000000000000000000000000000000000000'
+        referrer: isValidReferrer
+          ? referrer as `0x${string}`
+          : '0x0000000000000000000000000000000000000000'
       }
     ],
     overrides: {
