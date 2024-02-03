@@ -6,6 +6,7 @@ import { ConnectAction, Theme } from '../../../types'
 import { darkTheme, lightTheme } from '../../../styles/theme'
 import { WidgetContent } from './Widget'
 import { WidgetStatus } from '../../../types'
+import { useResolveName } from '../../../hooks/useResolveName'
 
 interface WidgetProps extends React.HTMLAttributes<HTMLDivElement> {
   connectAction: ConnectAction
@@ -28,6 +29,7 @@ interface WidgetProps extends React.HTMLAttributes<HTMLDivElement> {
  * @param shadowless Whether or not to render a box shadow around the widget. Will be ignored if hasContainer is false. Defaults to false.
  * @param theme Colors to render the widget in. Options are "light" (default) and "dark".
  * @param trackingCode Optional unique identifier (4-16 character string) to track the widget's usage on-chain.
+ * @param referrer Optional referrer name (e.g: alex.pls)
  */
 export const RegistrationWidget = ({
   connectAction,
@@ -52,6 +54,7 @@ export const RegistrationWidget = ({
     }
   }
 
+  const parsedReferrer = useResolveName(referrer)
   return (
     <ThemeProvider theme={widgetTheme === 'dark' ? darkTheme : lightTheme}>
       <div
@@ -70,6 +73,7 @@ export const RegistrationWidget = ({
             presetName={name}
             setStatus={updateStatus}
             trackingCode={trackingCode}
+            referrer={parsedReferrer}
             {...props}
           />
         </div>
