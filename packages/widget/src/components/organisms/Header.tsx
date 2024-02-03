@@ -18,6 +18,7 @@ const Container = styled.div(
 
 const Title = styled(Typography)(
   ({ theme }) => css`
+    color: ${theme.colors.textTertiary};
     font-size: ${theme.fontSizes.large};
 
     ${mq.xs.max(css`

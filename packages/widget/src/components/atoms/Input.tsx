@@ -38,8 +38,9 @@ export const Label = styled.label<{ size?: 'lg' }>(
   `
 )
 
-const StyledInput = styled.input(
-  ({ theme }) => css`
+const StyledInput = styled.input<{ isDuration?: boolean }>(
+  ({ isDuration, theme }) => css`
+    color: ${theme.colors.textPrimary};
     font-family: ${theme.fonts.sans};
     font-weight: ${theme.fontWeights.normal};
     font-size: 1.75rem;
@@ -60,7 +61,7 @@ const StyledInput = styled.input(
     }
 
     &:disabled {
-      color: inherit;
+      color: ${isDuration ? theme.colors.textTertiary : 'inherit'};
       background-color: inherit;
     }
 
@@ -131,6 +132,7 @@ interface InputProps {
   setValue: React.Dispatch<React.SetStateAction<string>>
   type: 'number' | 'text'
   value: string
+  isDuration?: boolean
 }
 
 export const Input = ({
@@ -141,6 +143,7 @@ export const Input = ({
   setValue,
   type,
   value,
+  isDuration,
   ...props
 }: InputProps) => {
   const handleIncrement = () => {
@@ -168,6 +171,7 @@ export const Input = ({
         placeholder={placeholder}
         onChange={(e) => setValue(e.target.value)}
         disabled={type === 'number' || disabled}
+        isDuration={isDuration}
       />
 
       {type === 'text' && isValid !== undefined && (

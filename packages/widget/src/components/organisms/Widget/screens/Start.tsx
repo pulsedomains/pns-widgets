@@ -174,6 +174,7 @@ export const Start = ({
           placeholder="1 year"
           value={duration}
           setValue={setDuration}
+          isDuration={true}
         />
 
         <Toggle
