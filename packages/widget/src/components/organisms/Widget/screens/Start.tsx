@@ -166,6 +166,7 @@ export const Start = ({
           setValue={setName}
           isValid={isValid}
           disabled={!!presetName}
+          autoFocus={true}
         />
 
         <Input
@@ -189,7 +190,7 @@ export const Start = ({
           <div>Unable to read from PNS Registrar</div>
         </Helper>
       ) : !isConnected || !isMounted ? (
-        <Button shadow={false} colorStyle="accentSecondary" type="submit">
+        <Button shadow={false} colorStyle="accentPrimary" type="submit">
           Connect Wallet
         </Button>
       ) : (

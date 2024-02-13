@@ -133,6 +133,7 @@ interface InputProps {
   type: 'number' | 'text'
   value: string
   isDuration?: boolean
+  autoFocus?: boolean
 }
 
 export const Input = ({
@@ -144,6 +145,7 @@ export const Input = ({
   type,
   value,
   isDuration,
+  autoFocus = false,
   ...props
 }: InputProps) => {
   const handleIncrement = () => {
@@ -172,6 +174,7 @@ export const Input = ({
         onChange={(e) => setValue(e.target.value)}
         disabled={type === 'number' || disabled}
         isDuration={isDuration}
+        autoFocus={autoFocus}
       />
 
       {type === 'text' && isValid !== undefined && (

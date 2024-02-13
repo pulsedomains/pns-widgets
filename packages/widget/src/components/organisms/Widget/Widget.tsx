@@ -36,7 +36,7 @@ const Widget = ({
   const [isRegistrationSuccess, setIsRegistrationSuccess] = useState<boolean>(false)
   const [isPrimaryNameSet, setIsPrimaryNameSet] = useState<boolean>(false)
   const [commitHash, setCommitHash] = useState<`0x${string}` | null>(null)
-  const [isPrimaryNameChecked, setIsPrimaryNameChecked] = useState(false)
+  const [isPrimaryNameChecked, setIsPrimaryNameChecked] = useState(true)
 
   useEffect(() => {
     if (isRegistrationSuccess) {
