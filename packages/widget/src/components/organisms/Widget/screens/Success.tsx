@@ -61,18 +61,18 @@ export const Success = ({ name }: RegistrationSuccessProps) => {
           <img src={logo} width={24} height={24} />
         </LogoWrapper>
 
-        <Heading>Registration Complete!</Heading>
+        <Heading color='textTertiary'>Registration Complete!</Heading>
       </div>
 
       <div>
         {address && (
-          <Typography asProp="p">
+          <Typography asProp="p" color='textTertiary'>
             {name}.pls will now point to{' '}
             <span title={address}>{truncateAddress(address)}</span> across web3.
           </Typography>
         )}
 
-        <Typography asProp="p">
+        <Typography asProp="p" color='textTertiary'>
           Configure your name further at{' '}
           <Link to={`https://app.pulse.domains/${name}.pls`}>
             app.pulse.domains
