@@ -34,35 +34,35 @@ const mainnet: Chain = {
   }
 }
 
-const testnet: Chain = {
-  id: 943,
-  name: 'PulseChain Testnet V4',
-  network: 'tpulse',
-  nativeCurrency: {
-    name: 'Pulse Coin',
-    symbol: 'tPLS',
-    decimals: 18,
-  },
-  rpcUrls: {
-    default: {
-      http: ['https://rpc.v4.testnet.pulsechain.com'],
-    },
-    public: {
-      http: ['https://rpc.v4.testnet.pulsechain.com'],
-    }
-  },
-  blockExplorers: {
-    default: {
-      name: 'View in Explorer',
-      url: 'https://scan.v4.testnet.pulsechain.com',
-    }
-  },
-  contracts: {
-    ensRegistry: {
-      address: '0x20256721c9543eC129C1202c047eB7b194d4703E'
-    },
-  }
-}
+// const testnet: Chain = {
+//   id: 943,
+//   name: 'PulseChain Testnet V4',
+//   network: 'tpulse',
+//   nativeCurrency: {
+//     name: 'Pulse Coin',
+//     symbol: 'tPLS',
+//     decimals: 18,
+//   },
+//   rpcUrls: {
+//     default: {
+//       http: ['https://rpc.v4.testnet.pulsechain.com'],
+//     },
+//     public: {
+//       http: ['https://rpc.v4.testnet.pulsechain.com'],
+//     }
+//   },
+//   blockExplorers: {
+//     default: {
+//       name: 'View in Explorer',
+//       url: 'https://scan.v4.testnet.pulsechain.com',
+//     }
+//   },
+//   contracts: {
+//     ensRegistry: {
+//       address: '0x20256721c9543eC129C1202c047eB7b194d4703E'
+//     },
+//   }
+// }
 
 providerArray.push(
   jsonRpcProvider({
@@ -71,9 +71,9 @@ providerArray.push(
         return { http: 'https://rpc.pulsechain.com' }
       }
 
-      if (chain.id === 943) {
-        return { http: 'https://rpc.v4.testnet.pulsechain.com' }
-      }
+      // if (chain.id === 943) {
+      //   return { http: 'https://rpc.v4.testnet.pulsechain.com' }
+      // }
 
       return null
     },
@@ -81,11 +81,12 @@ providerArray.push(
 )
 
 export const { chains, provider } = configureChains(
-  [mainnet, testnet],
+  [
+    mainnet,
+    // testnet
+  ],
   providerArray
 )
-
-console.log('process.env.NEXT_PUBLIC_WC_PROJECT_ID', process.env.NEXT_PUBLIC_WC_PROJECT_ID)
 
 const { connectors } = getDefaultWallets({
   appName: 'PulseChain Name Services',

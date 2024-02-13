@@ -18,7 +18,7 @@ npm install @pnsdomains/widgets ethers wagmi
 
 ## Name Registration Widget
 
-![pns-widgets](https://user-images.githubusercontent.com/35093316/212418070-f595cb64-260b-4069-b191-5e2553b8cd6a.jpg)
+![pns-widgets](https://pns-resources.s3.amazonaws.com/registration-widget.png)
 
 This component assumes your app is already wrapped in [`<WagmiConfig>`](https://wagmi.sh/docs/WagmiConfig) and either a [RainbowKit](https://www.rainbowkit.com/docs/installation#wrap-providers) or [ConnectKit](https://docs.family.co/connectkit/api-reference#connectkitprovider) provider.
 
@@ -52,7 +52,7 @@ export default function Page() {
 Clone this repo and install dependencies
 
 ```bash
-git clone https://github.com/pnsdomains/pns-widgets.git
+git clone https://github.com/pulsedomains/pns-widgets.git
 cd pns-widgets
 yarn install
 ```
