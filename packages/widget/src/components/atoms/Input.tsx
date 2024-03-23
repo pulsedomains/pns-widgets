@@ -133,10 +133,11 @@ interface InputProps {
   type: 'number' | 'text'
   value: string
   isDuration?: boolean
-  autoFocus?: boolean
+  ref?: any
 }
 
 export const Input = ({
+  ref,
   disabled,
   isValid,
   label,
@@ -145,7 +146,6 @@ export const Input = ({
   type,
   value,
   isDuration,
-  autoFocus = false,
   ...props
 }: InputProps) => {
   const handleIncrement = () => {
@@ -168,13 +168,13 @@ export const Input = ({
       <Label htmlFor={label}>{label}</Label>
 
       <StyledInput
+        ref={ref}
         id={label}
         value={value}
         placeholder={placeholder}
         onChange={(e) => setValue(e.target.value)}
         disabled={type === 'number' || disabled}
         isDuration={isDuration}
-        autoFocus={autoFocus}
       />
 
       {type === 'text' && isValid !== undefined && (

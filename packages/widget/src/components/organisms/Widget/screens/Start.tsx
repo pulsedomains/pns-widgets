@@ -7,7 +7,7 @@ import {
   usePrepareContractWrite,
 } from 'wagmi'
 import { Helper } from '@pnsdomains/thorin'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { BigNumber, utils } from 'ethers'
 
 import {
@@ -52,6 +52,8 @@ export const Start = ({
   setIsPrimaryNameChecked,
   setName,
 }: StartProps) => {
+  const domainInputRef = useRef<HTMLInputElement>(null)
+
   const debouncedName = useDebounce<string>(name, 500)
   const debouncedDuration = useDebounce<string>(duration, 500)
 
@@ -141,6 +143,12 @@ export const Start = ({
     }
   }, [commit.data])
 
+  useEffect(() => {
+    if (domainInputRef.current) {
+      domainInputRef.current.focus()
+    }
+  }, [])
+
   return (
     <Container
       as="form"
@@ -159,6 +167,7 @@ export const Start = ({
 
       <Inputs>
         <Input
+          ref={domainInputRef}
           type="text"
           label="Name"
           placeholder="richard.pls"
@@ -166,7 +175,6 @@ export const Start = ({
           setValue={setName}
           isValid={isValid}
           disabled={!!presetName}
-          autoFocus={true}
         />
 
         <Input

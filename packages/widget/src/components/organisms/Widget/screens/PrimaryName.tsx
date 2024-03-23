@@ -74,10 +74,10 @@ export const PrimaryName = ({
     <Container>
       {hasHeader && <Header />}
 
-      <Typography asProp="p">
+      <Typography asProp="p" color='textTertiary'>
         To improve your web3 experience, set your Primary PNS Name.
       </Typography>
-      <Typography asProp="p">
+      <Typography asProp="p" color='textTertiary'>
         This will allow dapps to identify you as {name}.pls
       </Typography>
 
